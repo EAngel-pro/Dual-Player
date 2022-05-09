@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Dual Player</title>
-	</head>
-	<body style="background-color: black">
-		<button id="btn1" style="position: absolute;Top: 1%;Right: 0.2%; background-color: green; color:white">YouTube Player 1: ON</button>
-		<button id="btn2" style="position: absolute;Top: 4%;Right: 1%; background-color: green; color:white">File Player 1: ON</button>
-		<button id="btn3" style="position: absolute;Top: 7%;Right: 0.2%; background-color: green; color:white">YouTube Player 2: ON</button>
-		<button id="btn4" style="position: absolute;Top: 10%;Right: 1%; background-color: green; color:white">File Player 2: ON</button>
-		<div id="myvid"></div>
-		<video width="640" height="480" id="myvid2" src="1 Minute Timer.mp4" controls preload="auto">Video not supported</video>
-		<div id="myvid3"></div>
-		<video width="640" height="480" id="myvid4" src="1 Minute Timer.mp4" controls preload="auto">Video not supported</video>
-		<div id="UI">
-			<button id="vidbutton">Play</button>
-			<button id="restartbutton">Restart</button>
-		</div>
-		<script>
 		var tag = document.createElement('script');
 		tag.src = "https://www.youtube.com/iframe_api";
 		var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -168,13 +149,3 @@
 			  myVideo4.currentTime = 0;
 			}
 		}
-		</script>
-		<br>
-		<br>
-		<br>
-        <a style="background-color: white" href="https://youtu.be/Pgw_ZDQnpfs">Credit to Countdown Videos for the source video.</a>
-		<br>
-		<br>
-		<br>
-	</body>
-</html>

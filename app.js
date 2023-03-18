@@ -1,5 +1,7 @@
 //initializing youtube iframe api
 var tag = document.createElement('script');
+var ytVidOne = 'Pgw_ZDQnpfs';
+var ytVidTwo = 'Pgw_ZDQnpfs';
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -8,13 +10,13 @@ function onYouTubeIframeAPIReady() {
 	myvid = new YT.Player('myvid', {
 		height: '480',
 		width: '640',
-		videoId: 'Pgw_ZDQnpfs'
+		videoId: ytVidOne
 	});
 	//initializing youtube player 2
 	myvid3 = new YT.Player('myvid3', {
 		height: '480',
 		width: '640',
-		videoId: 'Pgw_ZDQnpfs'
+		videoId: ytVidTwo
 	});
 }
 //player toggle variables
@@ -22,6 +24,11 @@ var boxOne = true;
 var boxTwo = true;
 var boxThree = true;
 var boxFour = true;
+//initialize html players
+var htmlSrcOne = "1 Minute Timer.mp4";
+var htmlSrcTwo = "1 Minute Timer.mp4";
+document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
+document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
 //ppbutton.innerHTML
 var playPauseBox = true;
 //youtube player 1 toggle button
@@ -44,7 +51,7 @@ document.getElementById("btn1").addEventListener("click", function()
 		boxOne = false;
 	}
 })
-//file player 1 toggle button
+//HTML player 1 toggle button
 document.getElementById("btn2").addEventListener("click", function()
 {
 	var box2=document.getElementById("myvid2")
@@ -52,14 +59,14 @@ document.getElementById("btn2").addEventListener("click", function()
 	{
 		box2.style.display="inline";
 		btn2.style.backgroundColor="green";
-		btn2.innerHTML = "File Player 1: ON";
+		btn2.innerHTML = "HTML Player 1: ON";
 		boxTwo = true;
 	}
 	else
 	{
 		box2.style.display="none";
 		btn2.style.backgroundColor="red";
-		btn2.innerHTML = "File Player 1: OFF";
+		btn2.innerHTML = "HTML Player 1: OFF";
 		myVideo2.pause();
 		boxTwo = false;
 	}
@@ -84,7 +91,7 @@ document.getElementById("btn3").addEventListener("click", function()
 		boxThree = false;
 	}
 })
-//file player 2 toggle button
+//HTML player 2 toggle button
 document.getElementById("btn4").addEventListener("click", function()
 {
 	var box4=document.getElementById("myvid4")
@@ -92,14 +99,14 @@ document.getElementById("btn4").addEventListener("click", function()
 	{
 		box4.style.display="inline";
 		btn4.style.backgroundColor="green";
-		btn4.innerHTML = "File Player 2: ON";
+		btn4.innerHTML = "HTML Player 2: ON";
 		boxFour = true;
 	}
 	else
 	{
 		box4.style.display="none";
 		btn4.style.backgroundColor="red";
-		btn4.innerHTML = "File Player 2: OFF";
+		btn4.innerHTML = "HTML Player 2: OFF";
 		myVideo4.pause();
 		boxFour = false;
 	}
@@ -158,5 +165,102 @@ function restartVids() {
 	}
 	if(boxFour == true) {
 		myVideo4.currentTime = 0;
+	}
+}
+//GetID function
+function YouTubeGetID(url){
+	var ID = '';
+	url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+	if(url[2] !== undefined) {
+		ID = url[2].split(/[^0-9a-z_\-]/i);
+		ID = ID[0];
+	}
+	else {
+		ID = url;
+	}
+		return ID;
+}
+
+//YouTube Player 1 URL Prompt
+var yturlbuttonone = document.getElementById("yturlone");
+yturlbuttonone.addEventListener("click", ytPromptOne);
+function ytPromptOne() {
+	if (boxOne == false) {
+		alert("YouTube Player 1 disabled!");
+	} else {
+		let url = prompt("Enter URL", "https://youtube.com/watch?v=" + ytVidOne);
+		if (url == null || url == "") {
+			alert("Cancelled!");
+		} else {
+			ytVidOne = YouTubeGetID(url);
+			myvid.loadVideoById(ytVidOne);
+		}
+	}
+}
+
+
+//HTML Player 1 URL Prompt
+var htmlurlbuttonone = document.getElementById("htmlswapone");
+htmlurlbuttonone.addEventListener("click", htmlPromptOne);
+function htmlPromptOne() {
+	if (boxTwo == false) {
+		alert("HTML Player 1 disabled!");
+	} else {
+		let url = prompt("Enter URL or File Path", htmlSrcOne);
+		if (url == null || url == "") {
+			alert("Cancelled!");
+		} else {
+			if (url[0] == '\"') {
+				let pathFixer = url;
+				url = pathFixer.replace(/"/g, '');
+				htmlSrcOne = url;
+				document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
+			} else {
+				htmlSrcOne = url;
+				document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
+			}
+		}
+	}
+}
+
+//YouTube Player 2 URL Prompt
+var yturlbuttontwo = document.getElementById("yturltwo");
+yturlbuttontwo.addEventListener("click", ytPromptTwo);
+function ytPromptTwo() {
+	if (boxThree == false) {
+		alert("YouTube Player 2 disabled!");
+	} else {
+		let url = prompt("Enter URL", "https://youtube.com/watch?v=" + ytVidTwo);
+		if (url == null || url == "") {
+			alert("Cancelled!");
+		} else {
+			ytVidTwo = YouTubeGetID(url);
+			myvid3.loadVideoById(ytVidTwo);
+		}
+	}
+}
+
+
+//HTML Player 2 URL Prompt
+var htmlurlbuttontwo = document.getElementById("htmlswaptwo");
+htmlurlbuttontwo.addEventListener("click", htmlPromptTwo);
+function htmlPromptTwo() {
+	if (boxFour == false) {
+		alert("HTML Player 2 disabled!");
+	} else {
+		let url = prompt("Enter URL or File Path", htmlSrcTwo);
+		if (url == null || url == "") {
+			alert("Cancelled!");
+		} else {
+			if (url[0] == '\"') {
+				let pathFixer = url;
+				url = pathFixer.replace(/"/g, '');
+				htmlSrcTwo = url;
+				document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
+			} else {
+				htmlSrcTwo = url;
+				document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
+			}
+		}
 	}
 }

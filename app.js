@@ -213,12 +213,9 @@ function htmlPromptOne() {
 			if (url[0] == '\"') {
 				let pathFixer = url;
 				url = pathFixer.replace(/"/g, '');
-				htmlSrcOne = url;
-				document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
-			} else {
-				htmlSrcOne = url;
-				document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
 			}
+			htmlSrcOne = url;
+			document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
 		}
 	}
 }
@@ -255,12 +252,9 @@ function htmlPromptTwo() {
 			if (url[0] == '\"') {
 				let pathFixer = url;
 				url = pathFixer.replace(/"/g, '');
-				htmlSrcTwo = url;
-				document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
-			} else {
-				htmlSrcTwo = url;
-				document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
 			}
+			htmlSrcTwo = url;
+			document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
 		}
 	}
 }

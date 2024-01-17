@@ -29,8 +29,6 @@ var htmlSrcOne = "1 Minute Timer.mp4";
 var htmlSrcTwo = "1 Minute Timer.mp4";
 document.getElementById("myvid2").setAttribute("src",htmlSrcOne);
 document.getElementById("myvid4").setAttribute("src",htmlSrcTwo);
-//ppbutton.innerHTML
-var playPauseBox = true;
 //youtube player 1 toggle button
 document.getElementById("btn1").addEventListener("click", function()
 {
@@ -111,43 +109,39 @@ document.getElementById("btn4").addEventListener("click", function()
 		boxFour = false;
 	}
 })
-//play/pause button
-var ppbutton = document.getElementById("vidbutton");
-ppbutton.addEventListener("click", playPause);
+//play/pause buttons
+var playbtn = document.getElementById("playbutton");
+playbtn.addEventListener("click", playFunction);
+var pausebtn = document.getElementById("pausebutton");
+pausebtn.addEventListener("click", pauseFunction);
 myVideo2 = document.getElementById("myvid2");
 myVideo4 = document.getElementById("myvid4");
-function playPause() {
-	if(playPauseBox == true) {
-		if(boxOne == true) {
-			myvid.playVideo();
-		}
-		if(boxTwo == true) {
-			myVideo2.play();
-		}
-		if(boxThree == true) {
-			myvid3.playVideo();
-		}
-		if(boxFour == true) {
-			myVideo4.play();
-		}
-		playPauseBox = false;
-		ppbutton.innerHTML = "Pause";
+function playFunction() {
+	if(boxOne == true) {
+		myvid.playVideo();
 	}
-	else {
-		if(boxOne == true) {
-			myvid.pauseVideo();
-		}
-		if(boxTwo == true) {
-			myVideo2.pause();
-		}
-		if(boxThree == true) {
-			myvid3.pauseVideo();
-		}
-		if(boxFour == true) {
-			myVideo4.pause();
-		}
-		playPauseBox = true;
-		ppbutton.innerHTML = "Play";
+	if(boxTwo == true) {
+		myVideo2.play();
+	}
+	if(boxThree == true) {
+		myvid3.playVideo();
+	}
+	if(boxFour == true) {
+		myVideo4.play();
+	}
+}
+function pauseFunction() {
+	if(boxOne == true) {
+		myvid.pauseVideo();
+	}
+	if(boxTwo == true) {
+		myVideo2.pause();
+	}
+	if(boxThree == true) {
+		myvid3.pauseVideo();
+	}
+	if(boxFour == true) {
+		myVideo4.pause();
 	}
 }
 //restart button
